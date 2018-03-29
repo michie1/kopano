@@ -26,3 +26,14 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+#folders {
+  width: 200px;
+  float: left;
+  min-height: 280px;
+}
+
+#items {
+  display: block;
+  min-height: 280px;
+}

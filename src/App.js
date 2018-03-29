@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
+import fetch from 'isomorphic-fetch';
+import ReactHtmlParser from 'react-html-parser';
 import './App.css';
 
 const api = 'http://192.168.50.22:5000';
@@ -44,9 +45,9 @@ class App extends Component {
 
     return (
       <div>
-        <ul>{renderFolders}</ul>
+        <ul id="folders">{renderFolders}</ul>
         <Search onQueryChange={this.search.bind(this)} />
-        <ul>{renderItems}</ul>
+        <ul id="items">{renderItems}</ul>
         {renderItemDetail}
       </div>
     );
@@ -133,7 +134,7 @@ class Folder extends Component {
 
   render() {
     return <li>
-              <a href="#" onClick={this.onFolderClick(this.props.id)}>{this.props.name}</a>
+              <a href="#folder" onClick={this.onFolderClick(this.props.id)}>{this.props.name}</a>
            </li>;
   }
 }
@@ -148,7 +149,7 @@ class Item extends Component {
 
   render() {
     return <li>
-              <a href="#" onClick={this.onItemClick(this.props.folderId, this.props.id)}>{this.props.subject} ({this.props.size})</a>
+              <a href="#item" onClick={this.onItemClick(this.props.folderId, this.props.id)}>{this.props.subject} ({this.props.size})</a>
            </li>;
   }
 }
